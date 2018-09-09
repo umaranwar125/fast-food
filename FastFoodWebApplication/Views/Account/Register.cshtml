@@ -1,0 +1,40 @@
+﻿@model FastFoodWebApplication.Models.RegisterModel
+@{
+    ViewBag.Title = "Register";
+}
+
+@Html.Raw(ViewBag.data)
+<section id="section-9">
+    <div class="container">
+        <div class="account wow fadeInUp" data-wow-delay=".5s" data-wow-duration="2s">
+            <h1 class="text-center"><b>R</b>egister</h1>
+            @using (Html.BeginForm())
+            {
+                <p class="text-danger text-center">@ViewBag.EmailError</p>
+                <p class="text-danger text-center">@ViewBag.Password</p>
+                <p class="text-danger text-center">@ViewBag.EmailExistError</p>
+                <label for="">First Name</label>
+                @Html.TextBoxFor(m => m.FirstName)
+                @Html.ValidationMessageFor(m => m.FirstName,"", new { @class = "text-danger"})
+                <label for="">Last Name</label>
+                @Html.TextBoxFor(m => m.LastName)
+                @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+                <label for="">Email Address</label>
+                @Html.TextBoxFor(m => m.EmailAddress)
+                @Html.ValidationMessageFor(m => m.EmailAddress, "", new { @class = "text-danger" })
+                <label for="">Password</label>
+                @Html.TextBoxFor(m => m.Password, new { @type = "password" })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                <label for="">Confirm Password</label>
+                @Html.TextBox("Password2","", new { type = "password" });
+                @Html.ValidationMessage("pwd", new { @class = "text-danger" })
+                <input type="submit" value="SIGNUP" class="btn btn-defauly center-block">
+            }
+            <p class="text-center">Already have an account? <a href="Login.html">Login</a></p>
+        </div>
+    </div>
+</section>
+
+<section id="section-6">
+    @Html.Partial("DownloadContentPartial");
+</section>

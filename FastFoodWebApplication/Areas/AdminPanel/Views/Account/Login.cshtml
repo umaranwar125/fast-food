@@ -1,0 +1,75 @@
+﻿@model FastFoodWebApplication.Models.AdminModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin Panel | Shopping Online</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <link rel="icon" href="../Images/logo.png" />
+
+    <!-- Css Media Query !important -->
+    <link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="mobile-device.css" />
+
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+
+    <!-- Online Google Font Link-->
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+
+    <!-- Online Google Font Link-->
+    <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+    <link href="~/Content/Style.css" rel="stylesheet" />
+
+</head>
+<body id="login">
+    <section>
+        <div class="container MainPage">
+            <div class="col-sm-1 col-md-1 col-lg-2"></div>
+            <div class="col-xs-12 col-sm-10 col-md-10 col-lg-8">
+                <div class="my-form">
+                    <div class="form-content">
+                        <h2 class="text-center">Login</h2>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                        <p>when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                    </div>
+                    <div class="login-form">
+                        <img src="~/Images/user.png" class="center-block" width="100" height="100" />
+                        <div class="inputs">
+                            <p class="text-center text-danger">@ViewBag.ErrorLogin</p>
+                            @using (Html.BeginForm())
+                            {
+                                <label>Username</label>
+                                @Html.TextBoxFor(m => m.Username, new { @placeholder = "Enter Username" })
+                                @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                                <label>Password 1</label>
+                                @Html.TextBoxFor(m => m.Password1, new { @placeholder = "Enter First Password", @type = "password" })
+                                @Html.ValidationMessageFor(m => m.Password1, "", new { @class = "text-danger" })
+                                <label>Password 2</label>
+                                @Html.TextBoxFor(m => m.Password2, new { @placeholder = "Enter Second Password", @type = "password" })
+                                @Html.ValidationMessageFor(m => m.Password2, "", new { @class = "text-danger" })
+                                <input type="submit" class="btn" value="Login" />
+                            }
+                            <a href="#Forgot-Password" class="pull-left ForgotPassword">Forgot Password</a>
+                            @Html.ActionLink("Go to Main Page", "Index", new { @area = "", Controller = "Home", @class = "pull-right page text-danger" });
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1 col-md-1 col-lg-2"></div>
+        </div>
+    </section>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/jquery-3.2.1.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+﻿@model FastFoodWebApplication.Models.RegisterModel
+@{
+    ViewBag.Title = "Login";
+}
+
+<!-- Section-9 -->
+<section id="section-9">
+    <div class="container">
+        <div class="account wow fadeInUp" data-wow-delay=".5s" data-wow-duration="2s">
+            <h1 class="text-center"><b>L</b>ogin</h1>
+            @using (Html.BeginForm())
+            {
+                <p class="text-success text-center">@TempData["RegisterSuccessfull"]</p>
+                <p class="text-danger text-center">@ViewBag.ErrorLogin</p>
+                <label for="">Email</label>
+                @Html.TextBoxFor(m => m.EmailAddress, new { @class = "email" })
+                @Html.ValidationMessage("email", new { @class = "text-danger" })
+                <label for="">Password</label>
+                @Html.TextBoxFor(m => m.Password, new { @type= "password", @class = "password"})
+                @Html.ValidationMessage("pwd", new { @class = "text-danger" })
+                <a href="#" class="forgot">Forgot Password</a>
+                <p class="error text-danger" style="margin-top: 20px"></p>
+                <input type="submit" name="" value="LOGIN" class="btn btn-default Login center-block">
+            }
+            <p class="text-center">Don't have an account? @Html.ActionLink("Register", "Register", "Account")</p>
+        </div>
+    </div>
+</section>
+<!-- End of Section-9 -->
+
+<section id="section-6">
+    @Html.Partial("DownloadContentPartial")
+</section>

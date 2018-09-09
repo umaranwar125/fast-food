@@ -1,0 +1,70 @@
+﻿@model FastFoodWebApplication.Models.CategoryModel
+
+@Html.Raw("<script>" + @ViewBag.Datas + "</script>")
+
+<!-- Breadcrumb -->
+<h2 class="heading">Categories</h2>
+<ol class="breadcrumb">
+    <li>@Html.ActionLink("Dashboard", "Statistics", new { @area = "AdminPanel", Controller = "Registration" })</li>
+    <li>@Html.ActionLink("Category", "Menu", new { @area = "AdminPanel", Controller = "Categories" })</li>
+    <li class="active">Data</li>
+</ol>
+<!-- Breadcrumb -->
+
+
+<div class="registered-users">
+    <div class="bg">
+        <p class="text-left text-success">@TempData["InsertSuccess"]</p>
+        <p class="text-left text-success">@TempData["UpdateSuccess"]</p>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+            <div class="row">
+                <button class="btn btn-info show show-content">ADD CATEGORY</button>
+                <br />
+                <div class="content" style="display: none">
+                    @using (Html.BeginForm())
+                    {
+                        <label>Category</label>
+                        @Html.TextBoxFor(m => m.CategoryName, new { @placeholder = "Enter Category Name", @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.CategoryName, "", new { @class = "text-danger" })
+                        <br />
+                        if (Request.QueryString["UpdateID"] != null)
+                        {
+                            @Html.HiddenFor(m => m.CategoryID)
+                        }
+                        <input type="submit" class="btn show" value="ADD NOW" />
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="table-responsive">
+            @if (ViewBag.TotalList != 0)
+            {
+                <table class="table table-responsive table-bordered table-hover ">
+                    <tr>
+                        <th>Update</th>
+                        <th>Category ID</th>
+                        <th>Category Name</th>
+                    </tr>
+                    @foreach (var data in ViewBag.List)
+                {
+                        <tr>
+                            <td>@Html.ActionLink("Update", "Menu", new { @area = "AdminPanel", Controller = "Categories", @UpdateID = data.CategoryID }, null)</td>
+                            <td>@data.CategoryID</td>
+                            <td>@data.CategoryName</td>
+                        </tr>
+                    }
+                </table>
+            }
+            else
+            {
+                <p class="text-center" style="font-size: 18px; letter-spacing: 1px">Sorry! No data found.</p>
+            }
+            <!-- Table -->
+        </div>
+        <!-- Table Responsive -->
+    </div>
+    <!-- BG -->
+</div>
+<!-- Registetred User -->
+

@@ -1,0 +1,166 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet"><!-- Online Font Awesome Link -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link href="~/Content/animate.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Style.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.2.1.js"></script>
+    <script src="~/Areas/AdminPanel/Script/File.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Side Bar -->
+            <div class="col-md-2 col-lg-2 side-bar" id="side-bar">
+                <nav>
+                    <h3><a href="Dashboard.aspx"><b>A</b>dmin <b>Panel</b></a></h3>
+                    <hr class="bottom" />
+                    <ul>
+                        <li><i class="fas fa-tachometer-alt"></i>&nbsp;&nbsp;@Html.ActionLink("Dashboard", "Statistics", new { @area = "AdminPanel", Controller = "Dashboard" })</li>
+                        <li><i class="fa fa-user fa-5x border"></i>&nbsp;&nbsp;@Html.ActionLink("Profile", "User", new { @area = "AdminPanel", Controller = "Profile" })</li>
+                        <li><i class="far fa-registered"></i>&nbsp;&nbsp;@Html.ActionLink("Registration", "Users", new { @area = "AdminPanel", Controller = "Registration" })</li>
+                        <li><i class="fas fa-envelope"></i>&nbsp;&nbsp;@Html.ActionLink("Contact", "Data", new { @area = "AdminPanel", Controller = "Contact" })</li>
+                        <li><i class="fas fa-list-ul"></i>&nbsp;&nbsp;@Html.ActionLink("Category", "Menu", new { @area = "AdminPanel", Controller = "Categories" })</li>
+                        <li><i class="fas fa-tshirt"></i>&nbsp;&nbsp;@Html.ActionLink("Products", "Data", new { @area = "AdminPanel", Controller = "Product" })</li>
+                        @*<a href="AdminProfile.aspx">
+                            <li><i class="fa fa-user fa-5x border" aria-hidden="true"></i>&nbsp;&nbsp;My Profile</li>
+                        </a>
+                        <a href="Slider.aspx">
+                            <li><i class="fas fa-images"></i>&nbsp;&nbsp;Main SLider</li>
+                        </a>
+                        <a href="Categories.aspx">
+                            <li><i class="fas fa-list-ul"></i>&nbsp;&nbsp;Categories</li>
+                        </a>
+                        <a href="Contact.aspx">
+                            <li><i class="fas fa-envelope"></i>&nbsp;&nbsp;Contact Us</li>
+                        </a>
+                        <a href="ContactVIAEmail.aspx">
+                            <li><i class="fas fa-share-square"></i>&nbsp;&nbsp;Personal Contact</li>
+                        </a>
+                        <a href="Newsletter.aspx">
+                            <li><i class="fas fa-newspaper"></i>&nbsp;&nbsp;Newsletter</li>
+                        </a>
+                        <a href="Products.aspx">
+                            <li><i class="fas fa-tshirt"></i>&nbsp;&nbsp;Products</li>
+                        </a>
+                        <a href="ProductImages.aspx">
+                            <li><i class="fas fa-wallet"></i>&nbsp;&nbsp;Product Images</li>
+                        </a>
+                        <a href="RegisteredUsers.aspx">
+                            <li><i class="far fa-registered"></i>&nbsp;&nbsp;Registerations</li>
+                        </a>
+                        <a href="Shipping.aspx">
+                            <li><i class="fas fa-shipping-fast"></i>&nbsp;&nbsp;Shiiping Addresses</li>
+                        </a>
+                        <a href="Orders.aspx">
+                            <li><i class="fas fa-shopping-bag"></i>&nbsp;&nbsp;Orders</li>
+                        </a>
+                        <a href="Reports.aspx">
+                            <li><i class="fas fa-file-alt"></i>&nbsp;&nbsp;Reports</li>
+                        </a>*@
+                    </ul>
+                </nav>
+            </div>
+            <!-- Side Bar -->
+            <!-- Second Column -->
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 right-bg">
+
+                <!-- Top COntent -->
+                <div class="top-content">
+                    <div class="top-content">
+                        <div class="pull-left">
+                            <a href="javascript:void(0)" onclick="openNav();"><i class="fa fa-bars" aria-hidden="true"></i></a>
+                            <span class="glyphicon glyphicon-search"></span>&nbsp;<input type="text" placeholder="Search">
+                            <input type="submit" class="btn btn-primary" value="Go">
+                        </div>
+
+                        <!-- Notification -->
+                        <div class="pull-right">
+                            
+                            <li class="dropdown notification">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-bell"></i><span class="digit">39</span></a>
+                                <ul class="dropdown-menu">
+                                    <h4 class="text-center">Notifications</h4>
+                                    <hr class="bottom" />
+
+                                    <!-- Content 1 -->
+                                    <div class="content">
+                                        <a href="Orders.aspx">
+                                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                <img src="" width="50" height="50">
+                                            </div>
+                                            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                                <p><span></span> Ordered <span></span> Product.</p>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                <hr style="border: 1px solid #d6dde5; margin-left: -15px; margin-right: -15px">
+                                            </div>
+                                        </a>
+                                    </div>
+                                </ul>
+                            </li>
+
+                            <!-- Message -->
+                            <li class="dropdown message">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-envelope"></i><span class="digit">20</span></a>
+                                <ul class="dropdown-menu">
+                                    <h4 class="text-center">Messages</h4>
+                                    <hr class="bottom">
+
+                                    <!-- Content 1 -->
+                                    <div class="content">
+                                        <div class="pull-left">
+                                            <h5>03159382193</h5>
+                                        </div>
+                                        <div class="pull-right">
+                                            <h5>12/12/2018</h5>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <h5 class="text-center" style="margin-top: -5px;">11:0PM</h5>
+                                        <div>
+                                            <h6>Hey Buddy how are you? hope you are fine.</h6>
+                                        </div>
+                                        <hr style="border: 1px solid #d6dde5; margin-top: 0px; margin-bottom: 20px;">
+                                    </div>
+                                </ul>
+                            </li>
+
+                            <!-- Profile -->
+                            <li class="dropdown profile">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <img src="">&nbsp;&nbsp;<h5>Umar Anwar</h5>
+                                    &nbsp;<span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="AdminProfile.aspx"><i class="fa fa-user fa-5x border" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Profile</a></li>
+                                    <li><a href="Logout.aspx"><i class="fa fa-power-off" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Logout</a></li>
+                                </ul>
+                            </li>
+                        </div>
+                    </div>
+                </div>
+                <!-- Top Content  -->
+                <!--  Main COntent -->
+                <div class="main-content" onclick="Open();">
+                    <div class="row">
+                        @RenderBody()
+                    </div>
+                    <!-- Row -->
+                </div>
+                <!-- Main Content -->
+            </div>
+            <!-- Second Column -->
+        </div>
+    </div>
+
+
+</body>
+</html>

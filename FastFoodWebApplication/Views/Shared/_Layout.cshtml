@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/animate.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <script src="~/Scripts/wow.min.js"></script>
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body>
+    <script>
+        new WOW().init();
+    </script>
+    
+    <!-- Section-1 -->
+    <section id="section-1" class="animated fadeInUp">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-fixed-top" style="background: rgba(0,0,0,1);">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="@Url.Action("Index", "Home")"><span>HFC</span> <br /> Nowshera</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Our Menu <span class="caret"></span></a>
+                            @{Html.RenderAction("MenuPartial", "Partial");}
+                        </li>
+                        <li>@Html.ActionLink("Gallery", "", "")</li>
+                        <li>@Html.ActionLink("Contact Us", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                        <li class="cart">@Html.ActionLink("Shopping Cart", "Shopping", "Cart")</li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <!-- End of Navigation -->
+    </section>
+    <!-- End of Section-1 -->
+
+    <div>
+        @RenderBody()
+    </div>
+
+    <!-- Section-7 -->
+    <section id="section-7">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="1s" data-wow-duration="2s">
+                <p>Copyright &copy; 2018 <span>HFC Nowshera</span>. All Rights Reserved</p>
+            </div>
+        </div>
+    </section>
+    <!-- End of Section-7 -->
+
+    <script src="~/Scripts/jquery-3.2.1.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/Site.js"></script>
+</body>
+</html>

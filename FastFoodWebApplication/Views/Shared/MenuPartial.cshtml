@@ -1,0 +1,17 @@
+﻿@model IEnumerable<FastFoodWebApplication.Models.CategoryModel>
+
+@{
+    if (Model != null)
+    {
+        <ul class="dropdown-menu">
+            @foreach (var data in Model)
+            {
+                <li><a href="@Url.Action("Categories", new { Controller = "Product", @CatId = data.CategoryID })">@data.CategoryName</a></li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p class="text-center">No Categories found</p>
+    }
+}

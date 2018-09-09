@@ -1,0 +1,50 @@
+﻿
+@model FastFoodWebApplication.Models.ContactModel
+
+    <!-- Breadcrumb -->
+    <h2 class="heading">Contact</h2>
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink("Dashboard", "Statistics", new { @area = "AdminPanel", Controller = "Registration" })</li>
+        <li>@Html.ActionLink("Contact", "Data", new { @area = "AdminPanel", Controller = "Contact" })</li>
+        <li class="active">Data</li>
+    </ol>
+    <!-- Breadcrumb -->
+
+    <div class="registered-users">
+        <div class="bg">
+            <div class="clearfix"></div>
+            <div class="table-responsive">
+                <p class="text-center text-danger">@TempData["DeleteSuccess"]</p>
+                @if (ViewBag.TotalList != 0)
+            {
+                    <table class="table table-responsive table-bordered table-hover ">
+                        <tr>
+                            <th>Delete</th>
+                            <th>Contact ID</th>
+                            <th>Full Name</th>
+                            <th>Email Address</th>
+                            <th>Message</th>
+                        </tr>
+                        @foreach (var data in ViewBag.List)
+                {
+                            <tr>
+                                <td>@Html.ActionLink("Delete", "Delete", new { @area = "AdminPanel", Controller = "Contact", @DeleteID = data.ContactID }, null)</td>
+                                <td>@data.ContactID</td>
+                                <td>@data.Name</td>
+                                <td>@data.Email</td>
+                                <td>@data.Message</td>
+                            </tr>
+                        }
+                    </table>
+                }
+                else
+                {
+                    <p class="text-center" style="font-size: 18px; letter-spacing: 1px">Sorry! No data found.</p>
+                }
+                <!-- Table -->
+            </div>
+            <!-- Table Responsive -->
+        </div>
+        <!-- BG -->
+    </div>
+    <!-- Registetred User -->

@@ -1,0 +1,86 @@
+﻿@model FastFoodWebApplication.Models.ProductModel
+
+@Html.Raw("<script>" + @ViewBag.Datas + "</script>")
+
+<!-- Breadcrumb -->
+<h2 class="heading">Products</h2>
+<ol class="breadcrumb">
+    <li>@Html.ActionLink("Dashboard", "Statistics", new { @area = "AdminPanel", Controller = "Registration" })</li>
+    <li>@Html.ActionLink("Products", "Data", new { @area = "AdminPanel", Controller = "Product" })</li>
+    <li class="active">Data</li>
+</ol>
+<!-- Breadcrumb -->
+
+
+<div class="registered-users">
+    <div class="bg">
+        <p class="text-left text-success">@TempData["InsertSuccess"]</p>
+        <p class="text-left text-success">@TempData["UpdateSuccess"]</p>
+        <p class="text-left text-success">@TempData["DeleteSuccess"]</p>
+        <p class="text-left text-danger">@ViewBag.CategorySelect</p>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+            <div class="row">
+                <button class="btn btn-info show show-content">ADD Product</button>
+                <br />
+                <div class="content" style="display: none">
+                    @using (Html.BeginForm("", "", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        if (Request.QueryString["UpdateID"] != null)
+                        {
+                            @Html.HiddenFor(m => m.ProductID)
+                        }
+                        <label>Name</label>
+                        @Html.TextBoxFor(m => m.Name, new { @placeholder = "Enter Product Name", @class = "form-control name" })
+                        <br />
+                        <label>Category</label>
+                        @Html.DropDownList("Category", (IEnumerable<SelectListItem>)ViewBag.Categories, new {@class = "form-control" })
+                        <br />
+                        <label>Price</label>
+                        @Html.TextBoxFor(m => m.Price, new { @placeholder = "Enter Product Price", @class = "form-control price" })
+                        <br />
+                        @Html.TextBox("myFile", "", new { type = "file", @class = "image"})
+                        <br />
+                        
+                        <p class="text-left text-danger error"></p>
+                        <input type="submit" class="btn show product-add" value="ADD NOW" />
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="table-responsive">
+            @if (ViewBag.TotalProductList != 0)
+            {
+                <table class="table table-responsive table-bordered table-hover ">
+                    <tr>
+                        <th>Update</th>
+                        <th>Delete</th>
+                        <th>Product ID</th>
+                        <th>Product Name</th>
+                        <th>Product Price</th>
+                        <th>Product Image</th>
+                    </tr>
+                    @foreach (var data in ViewBag.ProductList)
+                {
+                        <tr>
+                            <td>@Html.ActionLink("Update", "Data", new { @area = "AdminPanel", Controller = "Product", @UpdateID = data.ProductID }, null)</td>
+                            <td>@Html.ActionLink("Delete", "Delete", new { @area = "AdminPanel", Controller = "Product", @DeleteID = data.ProductID }, null)</td>
+                            <td>@data.ProductID</td>
+                            <td>@data.Name</td>
+                            <td>@data.Price</td>
+                            <td><img src="~/Images/@data.Image" width="80" height="80" /></td>
+                        </tr>
+                    }
+                </table>
+            }
+            else
+            {
+                <p class="text-center" style="font-size: 18px; letter-spacing: 1px">Sorry! No data found.</p>
+            }
+            <!-- Table -->
+        </div>
+        <!-- Table Responsive -->
+    </div>
+    <!-- BG -->
+</div>
+<!-- Registetred User -->
